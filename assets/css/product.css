@@ -1,0 +1,22 @@
+/* cat-page */
+.cat-page{
+    display: flex;
+    justify-content: center;
+    margin: -1rem 2.4rem;
+}
+.cat-page li{
+    list-style: none;
+    margin-left: 1rem;
+}
+.cat-page a{
+    text-decoration: none;
+    color: #000;
+    font-size: 1.6rem;
+    padding: 1.2rem 1.6rem;
+    border: 1px solid #fab528;
+    border-radius: 25px;
+}
+.cat-page .active a{
+    background-color: #fab528;
+    color: #000;
+}
