@@ -359,6 +359,10 @@
     font-size: 1.6rem;
     font-weight: 700;
 }
+.content-product-button a{
+    display: block;
+    text-align: center;
+}
 .content-product-button .content-product-btn:hover{
     cursor: pointer;
     background-color: #ffda91;
