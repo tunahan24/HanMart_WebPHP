@@ -47,11 +47,11 @@
                             <i class="fa-regular fa-star"></i>
                         </div>
                         <span class="content-product-price"><?php echo $row['product_price']; ?> VNĐ</span>
-                        <div class="content-product-button">
-                            <button class="content-product-btn">Thêm giỏ hàng<i class="ti-shopping-cart"></i></button>
-                        </div>
                     </div>
                 </a>
+                <div class="content-product-button">
+                    <a href="./cart/add.php?product_id=<?php echo $row['product_id'] ?>"><button class="content-product-btn">Thêm giỏ hàng<i class="ti-shopping-cart"></i></button></a>
+                </div>
             </div>
             <?php
                 }
