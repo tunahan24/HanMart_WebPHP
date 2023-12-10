@@ -11,7 +11,7 @@
             <ul class="top-list">
                 <li class="top-item"><a href="#" class="top-link">Tiếng Việt</a><span>|</span></li>
                 <li class="top-item"><a href="login_form.php" class="top-link">User</a><span>|</span></li>
-                <li class="top-item"><a href="./admin/login_admin_form.php" class="top-link">Admin</a></li>
+                <li class="top-item"><a href="login_admin_form.php" class="top-link">Admin</a></li>
             </ul>
         </div>
     </div>
@@ -33,7 +33,7 @@
                     <div class="icon-noti">0</div>
                 </a>
                 <a href="./cart.php" class="header-icon-item"><i class="fa-solid fa-cart-shopping"></i>
-                    <div class="icon-noti">0</div>
+                    <div class="icon-noti"><?php if(isset($_SESSION['cart'])){echo count($_SESSION['cart']);} else{echo 0;} ?></div>
                 </a>
             </div>
         </div>
