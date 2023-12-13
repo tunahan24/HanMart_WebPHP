@@ -23,3 +23,8 @@ modal.addEventListener('click', removeModal)
 addForm.addEventListener('click', function(event){
     event.stopPropagation()
 })
+
+function pay(){
+    alert('Vui lòng đăng nhập để thanh toán!');
+    window.location.href = 'login_form.php';
+}
