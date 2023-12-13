@@ -13,7 +13,7 @@
                 $_SESSION["user_name"] = $row["user_name"];
                 $_SESSION['user_email']=$email;
                 $_SESSION['user_password']=$pass;
-                header('location: profile.php');
+                header('location: index.php');
             }else{
                 $message = "Tài khoản mật khẩu không đúng!";
                 echo "<script type='text/javascript'>alert('$message');</script>";
