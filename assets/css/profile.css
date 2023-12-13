@@ -1,0 +1,36 @@
+/* header profile */
+.header-profile{
+    height: 34px;
+    line-height: 34px;
+    position: relative;
+    z-index: 1000;
+}
+.header-profile:hover .profile-list{
+    display: flex;
+}
+.header-profile .profile-link:hover{
+    opacity: 0.6;
+}
+.header-profile .profile-link{
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #000;
+    padding:0.6rem 1rem;
+    border-bottom: 1px solid #DEE2E6;
+}
+.header-profile .profile-link i{
+    padding-right: 1rem;
+}
+.header-profile .profile-list{
+    min-width: 140px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 34px;
+    right: 0;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: none;
+}

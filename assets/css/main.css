@@ -40,9 +40,7 @@
     padding: 0 140px;
     margin: 38px 0;
     position: sticky;
-    position: -webkit-sticky;
     top: 10px;
-    z-index: 10000;
 }
 .header-logo{
     width: 155px;
