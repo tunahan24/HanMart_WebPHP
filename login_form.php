@@ -9,9 +9,11 @@
             $query=mysqli_query($connect,$sql);
             $rows=mysqli_num_rows($query);
             if($rows>0){
+                $row = mysqli_fetch_array($query);
+                $_SESSION["user_name"] = $row["user_name"];
                 $_SESSION['user_email']=$email;
                 $_SESSION['user_password']=$pass;
-                header('location: index.php');
+                header('location: profile.php');
             }else{
                 $message = "Tài khoản mật khẩu không đúng!";
                 echo "<script type='text/javascript'>alert('$message');</script>";
