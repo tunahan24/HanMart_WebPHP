@@ -10,8 +10,21 @@
         <div class="header-top-right">
             <ul class="top-list">
                 <li class="top-item"><a href="#" class="top-link">Tiếng Việt</a><span>|</span></li>
-                <li class="top-item"><a href="login_form.php" class="top-link">User</a><span>|</span></li>
-                <li class="top-item"><a href="login_admin_form.php" class="top-link">Admin</a></li>
+                <?php
+                    if(isset($_SESSION["user_name"])){
+                        echo '<div class="header-profile">
+                        <a href="#" class="profile-link"><i class="fa-solid fa-user"></i>Hi,  '.$_SESSION["user_name"].' </a>
+                        <div class="profile-list">
+                            <a href="#" class="profile-link"><i class="fa-solid fa-user"></i>Thông tin</a>
+                            <a href="logout.php" class="profile-link"><i class="fa-solid fa-arrow-right-from-bracket"></i>Đăng xuất</a>
+                        </div>
+                        </div>';
+                        
+                    }else{
+                        echo '<li class="top-item"><a href="login_form.php" class="top-link">User</a><span>|</span></li>
+                        <li class="top-item"><a href="login_admin_form.php" class="top-link">Admin</a></li>';
+                    }
+                ?>
             </ul>
         </div>
     </div>
