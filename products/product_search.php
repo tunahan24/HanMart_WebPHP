@@ -30,10 +30,11 @@
     // Xây dựng thanh phân trang
     $listPage = "";
     for ($i = 1; $i <= $totalPage; $i++) {
+        $redirectURL = isset($_SESSION["user_name"]) ? 'profile.php' : 'index.php';
         if ($page == $i) {
-            $listPage .= '<li class="active"><a href="index.php?page_layout=product_search&stext='.$stext.'&page=' . $i . '">' . $i . '</a></li>';
+            $listPage .= '<li class="active"><a href="'.$redirectURL.'?page_layout=product_search&stext='.$stext.'&page=' . $i . '">' . $i . '</a></li>';
         } else {
-            $listPage .= '<li><a href="index.php?page_layout=product_search&stext='.$stext.'&page=' . $i . '">' . $i . '</a></li>';
+            $listPage .= '<li><a href="'.$redirectURL.'?page_layout=product_search&stext='.$stext.'&page=' . $i . '">' . $i . '</a></li>';
         }
     }
 ?>
