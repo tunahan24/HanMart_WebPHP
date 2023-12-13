@@ -23,3 +23,4 @@ function xoaSp(){
     var conf =confirm("Bạn có chắc chắn muốn xóa sản phẩm khỏi giỏ hàng không?");
     return conf;
 }
+
