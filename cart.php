@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="./assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="./assets/css/cart.css">
+    <link rel="stylesheet" href="./admin/css/main_admin.css">
+    <link rel="stylesheet" href="./assets/css/profile.css">
     <link rel="stylesheet" href="./assets/icon/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="./assets/icon/fontawesome-free-6.4.2-web/css/all.min.css">
 </head>
@@ -23,7 +25,11 @@
 <body>
     <!-- Header -->
     <?php
+    if (isset($_SESSION["user_name"])) {
+        include_once("profile_header.php");
+    } else {
         include_once("header.php");
+    }
     ?>
 
     <div class="main-cart">
@@ -35,7 +41,7 @@
                     foreach ($_POST["sl"] as $product_id => $product_qty) {
                         if($product_qty == 0){
                             unset($_SESSION["cart"][$product_id]);
-                        }elseif($product_qty > 0){
+                        }else if($product_qty > 0){
                             $_SESSION["cart"][$product_id]=$product_qty;
                         }
                     }
@@ -66,9 +72,9 @@
                         </tr>
                     </thead>
                     <?php
-                    $totalPriceAll= 0;
+                    $totalPriceAll = 0;
                     while ($row=mysqli_fetch_array($query)) {
-                        $totalPrice=$row['product_price']*$_SESSION['cart'][$row['product_id']];
+                        $totalPrice=$row["product_price"]*$_SESSION["cart"][$row["product_id"]];
                     ?>
                     <tbody>
                         <tr>
@@ -100,23 +106,27 @@
             }
             ?>
             <div class="total-price">
-                <h2>Tổng tiền: <?php echo $totalPriceAll; ?> VNĐ</h2>
+                <h2>Tổng tiền: <?php if(isset($_SESSION["cart"])){echo $totalPriceAll;}else{echo "0";} ?> VNĐ</h2>
             </div>
             <div class="cart-button">
                 <div>
                     <a href="index.php"><button class="back-btn"><i class="ti-arrow-left"></i>Continue Shopping</button></a>
                     <a onclick="document.getElementById('cart').submit();" href="#"><button class="back-btn"><i class="ti-reload"></i>Cập nhật giỏ hàng</button></a>
                 </div>
-                <button class="pay-btn">Thanh toán</button>
+                <button class="pay-btn js-pay">Thanh toán</button>
             </div>
         </div>
     </div>
-
+    <!-- Modal Thông tin khách hàng -->
+    <?php
+        include_once('./cart/pay.php');
+    ?>
     <!-- Footer -->
     <?php
         include_once("footer.php");
     ?>
     <script src="./assets/js/main.js" ></script>
+    <script src="./assets/js/cart.js" ></script>
 </body>
 
 </html>
