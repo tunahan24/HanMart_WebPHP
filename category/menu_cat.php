@@ -11,7 +11,7 @@
             while ($row_cat = mysqli_fetch_array($query_cat)) {
         ?>
         <li class="category-item">
-            <a href="./<?php if(isset($_SESSION["user_name"])){echo 'profile.php';}else{echo 'index.php';} ?>?page_layout=product_cat&cat_id=<?php echo $row_cat['cat_id'] ?>" class="category-link">
+            <a href="./index.php?page_layout=product_cat&cat_id=<?php echo $row_cat['cat_id'] ?>" class="category-link">
                 <?php
                     $cat_name = $row_cat['cat_name'];
                     if ($cat_name === "Rau củ quả") {
