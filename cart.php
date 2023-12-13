@@ -109,7 +109,14 @@
                     <a href="index.php"><button class="back-btn"><i class="ti-arrow-left"></i>Continue Shopping</button></a>
                     <a onclick="document.getElementById('cart').submit();" href="#"><button class="back-btn"><i class="ti-reload"></i>Cập nhật giỏ hàng</button></a>
                 </div>
-                <button class="pay-btn js-pay">Thanh toán</button>
+                <?php
+                if(isset($_SESSION["user_name"])){
+                    echo '<button class="pay-btn js-pay">Thanh toán</button>';
+                }else{
+                    echo '<button onclick="pay()" class="pay-btn">Thanh toán</button>';
+                }
+                ?>
+                
             </div>
         </div>
     </div>
