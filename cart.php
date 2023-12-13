@@ -25,11 +25,7 @@
 <body>
     <!-- Header -->
     <?php
-    if (isset($_SESSION["user_name"])) {
-        include_once("profile_header.php");
-    } else {
         include_once("header.php");
-    }
     ?>
 
     <div class="main-cart">
