@@ -11,6 +11,7 @@
             if($rows>0){
                 $row = mysqli_fetch_array($query);
                 $_SESSION["user_name"] = $row["user_name"];
+                $_SESSION["user_id"] = $row["user_id"];
                 $_SESSION['user_email']=$email;
                 $_SESSION['user_password']=$pass;
                 header('location: index.php');
