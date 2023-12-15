@@ -20,3 +20,111 @@
     background-color: #fab528;
     color: #000;
 }
+/* main product info */
+.main-product-info{
+    background-color: #F5F5F5;
+    min-height: 500px;
+    padding: 2rem 0;
+}
+.container-product-info{
+    display: flex;
+    justify-content: space-around;
+    background-color: #fff;
+    width: 80%;
+    height: 80%;
+    margin: 4rem auto;
+}
+.img-product-info{
+    width: 40%;
+}
+.img-product-info img{
+    width: 95%;
+    margin: 1rem;
+}
+.main-info{
+    width: 35%;
+    margin: 3rem 0rem;
+    padding-left: 2rem;
+    border-left: 1px solid #D2D2D2;
+}
+.main-info-cat,
+.main-info-qty,
+.main-info-desc,
+.main-info-header{
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+}
+.main-info-star{
+    color: #fab528;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #D2D2D2;
+}
+.main-info-price{
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #669900;
+    margin: 3rem 0;
+}
+.main-info-qty input{
+    border: none;
+    border-radius: 4px;
+    padding: 1rem 0.2rem;
+    text-align: center;
+}
+.main-info-qty input:focus{
+    outline: none;
+}
+.product-button{
+    border: 1px solid #DEE2E6;
+    border-radius: 4px;
+    width:fit-content;
+    display: inline-block;
+}
+.pointer{
+    cursor: pointer;
+    padding: 1rem;
+    font-size: 1.2rem;
+    border: none;
+    background: none;
+}
+.main-info-button{
+    margin-top: 2rem;
+}
+.main-info-button button{
+    padding: 1.4rem 2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    background-color: #fab528;
+    border: none;
+    border-radius: 4px;
+}
+.main-info-button button:hover{
+    opacity: 0.8;
+}
+.main-info-button button i{
+    padding-left: 1rem;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* sup info */
+.sup-info{
+    background-color: #F8F9FA;
+    width: 20%;
+    margin: 3rem;
+    padding: 2rem;
+    height: fit-content;
+}
+.sup-info-item{
+    display: flex;
+    margin-bottom: 2rem;
+    font-size: 1.4rem;
+    border-bottom: 1px solid #DEE2E6;
+    padding-bottom: 1rem;
+}
+.sup-info-desc,
+.sup-info-title{
+    padding: 0 0 1rem 1rem;
+}
