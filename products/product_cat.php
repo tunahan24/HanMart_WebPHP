@@ -38,7 +38,7 @@
                 while ($row = mysqli_fetch_array($query)) {
             ?>
             <div class="content-product-item">
-                <a href="#" class="content-product-link">
+                <a href="product_info.php?product_id=<?php echo $row['product_id'] ?>" class="content-product-link">
                     <div class="content-product-img">
                         <img src="./assets/img/products/<?php echo $row['product_image']; ?>" alt="Product">
                     </div>
