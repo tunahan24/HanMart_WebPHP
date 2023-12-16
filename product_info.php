@@ -6,6 +6,25 @@
     $product_id = $_GET["product_id"];
     $sql = "SELECT * FROM products INNER JOIN category ON product_cat=cat_id WHERE product_id = $product_id";
     $query = mysqli_query($connect, $sql);
+
+    if(isset($_POST["submit"])){
+        $sl=$_POST['sl'];
+        if(isset($_SESSION['cart'][$product_id])){
+            if(isset($_POST['sl'])){
+                $_SESSION['cart'][$product_id]=$_SESSION['cart'][$product_id] + $sl;
+            }else{
+                $_SESSION['cart'][$product_id]=$_SESSION['cart'][$product_id] + 1;
+            }
+        }else{
+            if(isset($_POST['sl'])){
+                $_SESSION['cart'][$product_id]=$sl;
+            }else{
+                $_SESSION['cart'][$product_id] = 1;
+            }
+        }
+        $message = "Thêm vào giỏ hàng thành công!";
+        echo "<script type='text/javascript'>alert('$message');window.location.href = 'cart.php';</script>";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,38 +54,42 @@
             <div class="img-product-info">
                 <img src="./assets/img/products/<?php echo $row['product_image'] ?>" alt="">
             </div>
+            <!-- main-info -->
             <div class="main-info">
-                <div class="main-info-header">
-                    <h2><?php echo $row['product_name'] ?></h2>
-                </div>
-                <div class="main-info-star">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                </div>
-                <div class="main-info-price">
-                    <span><?php echo $row['product_price'] ?> VND</span>
-                </div>
-                <div class="main-info-desc">
-                    <p><?php echo $row['product_desc'] ?></p>
-                </div>
-                <div class="main-info-cat">
-                    <span>Danh mục: <?php echo $row['cat_name']; ?></span>
-                </div>
-                <div class="main-info-qty">
-                    <span>Số lượng:</span>
-                    <div class="product-button">
-                        <button class="ti-minus pointer decrease"></button>
-                        <input class="quantity" name="sl[<?php echo $row['product_id']; ?>]" type="number" value="1" title="Qty" step="1" min="1" max="18" required>
-                        <button class="ti-plus pointer increase"></button>
+                <form method="post" >
+                    <div class="main-info-header">
+                        <h2><?php echo $row['product_name'] ?></h2>
                     </div>
-                </div>
-                <div class="main-info-button">
-                    <a href="./cart/add.php?product_id=<?php echo $row['product_id'] ?>"><button>Thêm giỏ hàng<i class="ti-shopping-cart"></i></button></a>
-                </div>
+                    <div class="main-info-star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <div class="main-info-price">
+                        <span><?php echo $row['product_price'] ?> VND</span>
+                    </div>
+                    <div class="main-info-desc">
+                        <p><?php echo $row['product_desc'] ?></p>
+                    </div>
+                    <div class="main-info-cat">
+                        <span>Danh mục: <?php echo $row['cat_name']; ?></span>
+                    </div>
+                    <div class="main-info-qty">
+                        <span>Số lượng:</span>
+                        <div class="product-button">
+                            <button class="ti-minus pointer decrease"></button>
+                            <input class="quantity" name="sl" type="number" value="<?php if(isset($_POST['sl'])){echo $_POST['sl'];}else{echo 1;} ?>" title="Qty" step="1" min="1" max="100" required="">
+                            <button class="ti-plus pointer increase"></button>
+                        </div>
+                    </div>
+                    <div class="main-info-button">
+                        <a href=""><button type="submit" name="submit" >Thêm giỏ hàng<i class="ti-shopping-cart"></i></button></a>
+                    </div>
+                </form>
             </div>
+            <!-- sup-info -->
             <div class="sup-info">
                 <div class="sup-info-item">
                     <div class="sup-info-img">
