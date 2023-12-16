@@ -45,7 +45,7 @@
                             <td class="product-thumbnail"><a href=""><img src="./assets/img/products/<?php echo $row['product_image']; ?>" alt="Red"></a></td>
                             <td class="product-name"><a href=""><?php echo $row['product_name']; ?></a></td>
                             <td class="product-price">
-                                <div class="box-price"><span class="quantity"><?php echo $row['product_price']; ?></span></div>
+                                <div class="box-price"><span class="quantity"><?php echo number_format($row['product_price'], 0, ',', '.') ; ?></span></div>
                             </td>
                             <td class="product-quantity">
                                 <div class="product-button">
@@ -55,7 +55,7 @@
                                 </div>
                             </td>
                             <td class="product-subtotal">
-                                <div class="box-price"><span class="price-current"><?php echo $totalPrice; ?></span></div>
+                                <div class="box-price"><span class="price-current"><?php echo number_format($totalPrice, 0, ',', '.'); ?></span></div>
                             </td>
                             <td class="product-remove"><a onclick="return xoaSp();" href="./cart/delete.php?product_id=<?php echo $row['product_id']; ?>"><i class="fa-regular fa-trash-can"></i></a></td>
                         </tr>
@@ -73,7 +73,7 @@
     ?>
     <div class="total-price">
         <h2>Tổng tiền: <?php if (isset($_SESSION["cart"])) {
-                            echo $totalPriceAll;
+                            echo number_format($totalPriceAll, 0, ',', '.');
                         } else {
                             echo "0";
                         } ?> VNĐ</h2>
