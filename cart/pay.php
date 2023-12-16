@@ -6,12 +6,11 @@
 
     if(isset($_POST["submit"])){
         $name=$_POST["name"];
-        $email=$_POST["user_email"];
         $sdt=$_POST["sdt"];
         $dc=$_POST["diachi"];
 
-        if(isset($name) && isset($email) && isset($sdt) && isset($dc)){
-            $sqlUpdate = "UPDATE user SET user_name='$name', user_email='$email', sdt='$sdt', diachi='$dc' WHERE user_id=$user_id ";
+        if(isset($name) && isset($sdt) && isset($dc)){
+            $sqlUpdate = "UPDATE user SET user_name='$name', sdt='$sdt', diachi='$dc' WHERE user_id=$user_id ";
             $queryUpdate = mysqli_query($connect, $sqlUpdate);
             unset($_SESSION["cart"]);
             header("location: ./cart.php?page_layout=pay_success");
@@ -35,11 +34,6 @@
                         <label style="font-size: 18px">Tên khách hàng</label>
                         <input type="text" name="name" class="form-control" placeholder="Nhập họ và tên" value="<?php if(isset($_POST['name'])){echo $_POST['name'];}else{echo $row['user_name'];} ?>" required>
                     </div>
-                    <div class="form-group">
-                        <label style="font-size: 18px">Email</label>
-                        <input type="email" name="user_email" class="form-control" placeholder="Nhập email" value="<?php if(isset($_POST['user_email'])){echo $_POST['user_email'];}else{echo $row['user_email'];} ?>" required>
-                    </div>
-
                     <div class="form-group">
                         <label style="font-size: 18px">Số điện thoại</label>
                         <input type="number" name="sdt" class="form-control" placeholder="Nhập số điện thoại" value="<?php if(isset($_POST['sdt'])){echo $_POST['sdt'];}else{echo $row['sdt'];} ?>" required>
