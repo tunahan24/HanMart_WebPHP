@@ -46,7 +46,7 @@
                             <i class="fa-regular fa-star"></i>
                             <i class="fa-regular fa-star"></i>
                         </div>
-                        <span class="content-product-price"><?php echo $row['product_price']; ?> VNĐ</span>
+                        <span class="content-product-price"><?php echo number_format($row['product_price'], 0, ',', '.'); ?> VNĐ</span>
                     </div>
                 </a>
                 <div class="content-product-button">
