@@ -74,7 +74,7 @@
                         <p><?php echo $row['product_desc'] ?></p>
                     </div>
                     <div class="main-info-cat">
-                        <span>Danh mục: <?php echo $row['cat_name']; ?></span>
+                        <span>Danh mục: <a href="./index.php?page_layout=product_cat&cat_id=<?php echo $row['cat_id'] ?>"><?php echo $row['cat_name']; ?></a></span>
                     </div>
                     <div class="main-info-qty">
                         <span>Số lượng:</span>
