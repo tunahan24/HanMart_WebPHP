@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 08, 2023 lúc 10:15 AM
+-- Thời gian đã tạo: Th12 17, 2023 lúc 11:27 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -89,8 +89,8 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_cat`, `product_name`, `product_price`, `product_qty`, `product_desc`, `product_image`, `product_keyword`) VALUES
-(1, 1, 'Chanh', 18000, 1000, '                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        Chanh tươi nhập khẩu từ Mỹ                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ', 'lemon.jpg', 'chanh, rau củ quả'),
-(2, 8, 'Mì Ý Spaghetti', 125000, 1000, 'Mì Ý Spaghetti chuẩn công thức từ Ý', 'miY.jpg', 'mì ý, spaghetti'),
+(1, 1, 'Chanh', 18000, 1000, '                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    Chanh tươi nhập khẩu từ Mỹ                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ', 'lemon.jpg', 'chanh, rau củ quả'),
+(2, 8, 'Mì Ý Spaghetti', 125000, 1000, '                                                                                                                                            Mì Ý Spaghetti chuẩn công thức từ Ý                   ', 'miY.jpg', 'mì ý, spaghetti'),
 (3, 7, 'Sữa tươi', 99000, 1000, 'Sữa tươi nguyên chất 100% từ sữa bò', 'milk.jpg', 'sữa tươi, sữa'),
 (4, 4, 'Bánh mì', 64000, 1234, 'Bánh mì nhập khẩu từ Đức', 'banhmi.jpg', 'bánh mì'),
 (5, 6, 'Coca Cola', 20000, 1000, 'Coca Cola chuẩn bị nguyên bản', 'coca.jpg', 'coca cola, đồ uống, nước uống, nước giải khát'),
@@ -111,15 +111,19 @@ CREATE TABLE `user` (
   `user_id` int(10) NOT NULL,
   `user_name` varchar(50) NOT NULL,
   `user_email` varchar(255) NOT NULL,
-  `user_password` varchar(255) NOT NULL
+  `user_password` varchar(255) NOT NULL,
+  `diachi` varchar(100) NOT NULL,
+  `sdt` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `user`
 --
 
-INSERT INTO `user` (`user_id`, `user_name`, `user_email`, `user_password`) VALUES
-(1, 'Tuanh', 'tuanh@gmail.com', '123456');
+INSERT INTO `user` (`user_id`, `user_name`, `user_email`, `user_password`, `diachi`, `sdt`) VALUES
+(1, 'Tuanh', 'tuanh@gmail.com', '123456', 'Bắc Ninh', 123456789),
+(2, 'TunaHan', 'tuanh2@gmail.com', '123456', 'Hà Nộ', 888614993),
+(3, 'TuanAnh', 'tuanh3@gmail.com', '123456', 'Sao Hỏa', 123456789);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -158,7 +162,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT cho bảng `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `admin_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `category`
@@ -176,7 +180,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
