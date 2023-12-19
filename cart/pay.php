@@ -4,7 +4,7 @@
     $query = mysqli_query($connect, $sql);
     $row = mysqli_fetch_array($query);
 
-    if(isset($_POST["submit"])){
+    if(isset($_POST["redirect"])){
         $name=$_POST["name"];
         $sdt=$_POST["sdt"];
         $dc=$_POST["diachi"];
@@ -13,7 +13,7 @@
             $sqlUpdate = "UPDATE user SET user_name='$name', sdt='$sdt', diachi='$dc' WHERE user_id=$user_id ";
             $queryUpdate = mysqli_query($connect, $sqlUpdate);
             unset($_SESSION["cart"]);
-            header("location: ./cart.php?page_layout=pay_success");
+            header("location: ./vnpay.php");
         }
     }
 ?>
@@ -28,7 +28,7 @@
             </button>
         </div>
         <div class="modal-body">
-            <form action="" method="POST">
+            <form action="./vnpay.php" method="POST">
                 <div class="row">
                     <div class="form-group">
                         <label style="font-size: 18px">Tên khách hàng</label>
@@ -44,7 +44,7 @@
                         <input type="text" name="diachi" class="form-control" placeholder="Nhập địa chỉ nhận hàng" value="<?php if(isset($_POST['diachi'])){echo $_POST['diachi'];}else{echo $row['diachi'];} ?>" required>
                     </div>
                     <div class="">
-                        <button type="submit" class="btn btn_them add-product" name="submit">Xác nhận</button>
+                        <button type="submit" class="btn btn_them add-product" name="redirect">Xác nhận</button>
                     </div>
                 </div>
             </form>
