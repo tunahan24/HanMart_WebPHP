@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 17, 2023 lúc 11:27 AM
+-- Thời gian đã tạo: Th12 29, 2023 lúc 10:00 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -41,6 +41,67 @@ CREATE TABLE `admin` (
 INSERT INTO `admin` (`admin_id`, `admin_name`, `admin_email`, `admin_password`) VALUES
 (1, 'AdTuanh', 'admin1@gmail.com', '123456'),
 (2, 'TunaHan', 'admin2@gmail.com', '123456');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `cart`
+--
+
+CREATE TABLE `cart` (
+  `id_cart` int(11) NOT NULL,
+  `user_id` int(10) NOT NULL,
+  `code_cart` varchar(10) NOT NULL,
+  `status_cart` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `cart`
+--
+
+INSERT INTO `cart` (`id_cart`, `user_id`, `code_cart`, `status_cart`) VALUES
+(2, 1, '7370', 0),
+(3, 2, '6691', 0),
+(4, 3, '5875', 0),
+(5, 1, '1895', 0),
+(6, 1, '3586', 1),
+(7, 3, '3625', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `cart_detail`
+--
+
+CREATE TABLE `cart_detail` (
+  `id_cart_detail` int(11) NOT NULL,
+  `code_cart` varchar(10) NOT NULL,
+  `product_id` int(10) NOT NULL,
+  `soluong` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `cart_detail`
+--
+
+INSERT INTO `cart_detail` (`id_cart_detail`, `code_cart`, `product_id`, `soluong`) VALUES
+(2, '7370', 1, 1),
+(3, '7370', 3, 4),
+(4, '6691', 2, 1),
+(5, '6691', 7, 4),
+(6, '5875', 4, 1),
+(7, '5875', 9, 1),
+(8, '5875', 11, 3),
+(9, '1895', 1, 1),
+(10, '1895', 2, 1),
+(11, '1895', 3, 5),
+(12, '3586', 6, 1),
+(13, '3586', 5, 2),
+(14, '3586', 10, 2),
+(15, '3586', 8, 1),
+(16, '3625', 11, 3),
+(17, '3625', 7, 2),
+(18, '3625', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -122,7 +183,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `user_name`, `user_email`, `user_password`, `diachi`, `sdt`) VALUES
 (1, 'Tuanh', 'tuanh@gmail.com', '123456', 'Bắc Ninh', 123456789),
-(2, 'TunaHan', 'tuanh2@gmail.com', '123456', 'Hà Nộ', 888614993),
+(2, 'TunaHan', 'tuanh2@gmail.com', '123456', 'Hà Nội', 888614993),
 (3, 'TuanAnh', 'tuanh3@gmail.com', '123456', 'Sao Hỏa', 123456789);
 
 --
@@ -134,6 +195,18 @@ INSERT INTO `user` (`user_id`, `user_name`, `user_email`, `user_password`, `diac
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`);
+
+--
+-- Chỉ mục cho bảng `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`id_cart`);
+
+--
+-- Chỉ mục cho bảng `cart_detail`
+--
+ALTER TABLE `cart_detail`
+  ADD PRIMARY KEY (`id_cart_detail`);
 
 --
 -- Chỉ mục cho bảng `category`
@@ -163,6 +236,18 @@ ALTER TABLE `user`
 --
 ALTER TABLE `admin`
   MODIFY `admin_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT cho bảng `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT cho bảng `cart_detail`
+--
+ALTER TABLE `cart_detail`
+  MODIFY `id_cart_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT cho bảng `category`
