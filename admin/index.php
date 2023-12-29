@@ -41,8 +41,8 @@
                 <ul class="dashboard-list">
                     <li class="dashboard-item"><a href="index.php" class="dashboard-link">Quản lý Sản phẩm</a></li>
                     <li class="dashboard-item"><a href="index.php?page_layout=category" class="dashboard-link">Quản lý Danh mục</a></li>
-                    <li class="dashboard-item"><a href="#" class="dashboard-link">Quản lý Đơn hàng</a></li>
                     <li class="dashboard-item"><a href="index.php?page_layout=taikhoan" class="dashboard-link">Quản lý Tài khoản</a></li>
+                    <li class="dashboard-item"><a href="index.php?page_layout=cart_order" class="dashboard-link">Thống kê đơn hàng</a></li>
                 </ul>
             </div>
 
@@ -54,6 +54,10 @@
                     case 'category': include_once('./category/category.php');
                         break;
                     case 'taikhoan': include_once('./taikhoan/taikhoan.php');
+                        break;
+                    case 'cart_order': include_once('./cart_order/main_cart_order.php');
+                        break;
+                    case 'cart_detail': include_once('./cart_order/cart_detail.php');
                         break;
                     case 'editProduct': include_once('./products/edit.php');
                         break;
