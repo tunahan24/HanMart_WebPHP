@@ -38,6 +38,9 @@
                     case "pay_success":
                         include_once("./cart/pay_success.php");
                         break;
+                    case "pay_return":
+                        include_once("./cart/pay_return.php");
+                        break;
                 }
             } else {
                 include_once("./cart/main_cart.php");
