@@ -33,7 +33,7 @@
                     <th>Id</th>
                     <th>Tên</th>
                     <th>Ảnh</th>
-                    <th>Giá</th>
+                    <th>Đơn giá</th>
                     <th>Số lượng</th>
                     <th>Danh mục</th>
                     <th>Sửa</th>
@@ -47,7 +47,7 @@
                         <td><?php echo $row['product_id']; ?></td>
                         <td><?php echo $row['product_name']; ?></td>
                         <td><img src="../assets/img/products/<?php echo $row['product_image']; ?>" alt=""></td>
-                        <td><?php echo $row['product_price']; ?></td>
+                        <td><?php echo number_format($row['product_price'], 0, ',', '.'); ?></td>
                         <td><?php echo $row['product_qty']; ?></td>
                         <td><?php echo $row['cat_name']; ?></td>
                         <td><a href="./index.php?page_layout=editProduct&product_id=<?php echo $row['product_id'] ?>" class="btn btn_sua js-sua">Sửa</a>
