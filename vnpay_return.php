@@ -14,10 +14,6 @@ if (isset($_GET["vnp_ResponseCode"]) && $_GET["vnp_ResponseCode"] == "00") {
     if (!empty($arr)) {
         $strId = implode(", ", $arr);
 
-        foreach ($arr as $product_id) {
-            unset($_SESSION["cart"][$product_id]);
-        }
-
         header("Location: ./cart.php?page_layout=pay_success");
         exit();
     }
