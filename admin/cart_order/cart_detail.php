@@ -49,9 +49,9 @@
             </tr>
         </table>
     </div>
-    <div class="cart-button">
+    <div class="cart-button-ad">
         <div>
-            <a href="index.php?page_layout=cart_order"><button class="back-btn"><i class="ti-arrow-left"></i>Back</button></a>
+            <a href="index.php?page_layout=cart_order"><button class="back-btn-ad"><i class="ti-arrow-left"></i>Back</button></a>
         </div>
     </div>
 </div>
