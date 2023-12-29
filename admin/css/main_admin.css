@@ -296,19 +296,19 @@
     color: #000;
 }
 /* cart */
-.cart-button{
+.cart-button-ad{
     margin-left: 2.4rem;
 }
-.back-btn{
+.back-btn-ad{
     padding: 1.2rem;
     background: none;
     color: #fff;
     font-weight: 700;
     font-size: 2rem;
 }
-.back-btn:hover{
+.back-btn-ad:hover{
     color: #fab528;
 }
-.back-btn i{
+.back-btn-ad i{
     padding-right: 1rem;
 }
