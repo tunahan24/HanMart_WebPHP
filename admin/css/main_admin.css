@@ -160,6 +160,8 @@
 .btn_them{
     background-color: rgb(23, 216, 152);
     font-weight: 600;
+    text-decoration: none;
+    color: #000;
 }
 .btn_sua{
     background-color: #fab528;
@@ -292,4 +294,21 @@
 .cat-page .active a{
     background-color: #fff;
     color: #000;
+}
+/* cart */
+.cart-button{
+    margin-left: 2.4rem;
+}
+.back-btn{
+    padding: 1.2rem;
+    background: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 2rem;
+}
+.back-btn:hover{
+    color: #fab528;
+}
+.back-btn i{
+    padding-right: 1rem;
 }
