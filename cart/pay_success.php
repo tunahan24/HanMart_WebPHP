@@ -1,11 +1,15 @@
-<div class="thanks">
-    <p>Quý khách đã đặt hàng thành công!</p>
-    <p>- Sản phẩm của bạn sẽ được chuyển tới địa chỉ trước đó sau thời gian 2-3 ngày tính từ thời điểm này</p>
-    <p>- Nhân viên giao hàng sẽ liên hệ với bạn qua số điện thoại trước khi giao hàng 24h</p>
-    <p>Cảm ơn bạn đã sử dụng sản phẩm của chúng tôi!</p>
-</div>
-<div class="cart-button">
-    <div>
-        <a href="index.php"><button class="back-btn"><i class="ti-arrow-left"></i>Continue Shopping</button></a>
-    </div>
-</div>
+<?php
+$user_id=$_SESSION["user_id"];
+$code_order=rand(0,9999);
+
+$insert_cart = "INSERT INTO cart(user_id, code_cart, status_cart) VALUES('$user_id','$code_order',1)";
+$cart_query = mysqli_query($connect,$insert_cart);
+if($cart_query){
+    foreach($_SESSION['cart'] as $product_id => $product_qty){
+        $insert_cart_detail = "INSERT INTO cart_detail(product_id, code_cart, soluong) VALUES('$product_id','$code_order','$product_qty')";
+        mysqli_query($connect,$insert_cart_detail);
+    }
+    unset($_SESSION["cart"]);
+    header("location: ./cart.php?page_layout=pay_return");
+}
+?>
