@@ -1,21 +1,9 @@
 <?php
     $user_id=$_SESSION["user_id"];
+    $code_order=rand(0,9999);
     $sql = "SELECT * FROM user WHERE user_id = $user_id";
     $query = mysqli_query($connect, $sql);
     $row = mysqli_fetch_array($query);
-
-    if(isset($_POST["redirect"])){
-        $name=$_POST["name"];
-        $sdt=$_POST["sdt"];
-        $dc=$_POST["diachi"];
-
-        if(isset($name) && isset($sdt) && isset($dc)){
-            $sqlUpdate = "UPDATE user SET user_name='$name', sdt='$sdt', diachi='$dc' WHERE user_id=$user_id ";
-            $queryUpdate = mysqli_query($connect, $sqlUpdate);
-            unset($_SESSION["cart"]);
-            header("location: ./vnpay.php");
-        }
-    }
 ?>
 
 <!-- Modal Thông tin khách hàng -->
