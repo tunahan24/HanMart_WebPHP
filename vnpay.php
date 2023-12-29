@@ -34,6 +34,7 @@ if (isset($_SESSION["cart"])) {
         die("Query failed: " . mysqli_error($connect));
     }
 }
+
 ?>
 <?php
 $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
@@ -93,14 +94,25 @@ if (isset($vnp_HashSecret)) {
     $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret);
     $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
 }
+    
 $returnData = array('code' => '00'
     , 'message' => 'success'
     , 'data' => $vnp_Url);
     if (isset($_POST['redirect'])) {
+        $user_id=$_SESSION["user_id"];
+        $name=$_POST["name"];
+        $sdt=$_POST["sdt"];
+        $dc=$_POST["diachi"];
+        
+        if(isset($name) && isset($sdt) && isset($dc)){
+            $sqlUpdate = "UPDATE user SET user_name='$name', sdt='$sdt', diachi='$dc' WHERE user_id=$user_id ";
+            $queryUpdate = mysqli_query($connect, $sqlUpdate);
+        }
         header('Location: ' . $vnp_Url);
         die();
     } else {
         echo json_encode($returnData);
     }
 
+    
 ?>
