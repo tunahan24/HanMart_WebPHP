@@ -29,20 +29,9 @@
         <!-- Content -->
         <div class="main-content">
             <!-- Slider -->
-            <div class="slider">
-                <div class="content-slider">
-                    <div class="main-slider">
-                        <a href="#" class="main-slider-link">
-                            <img src="./assets/img/slider/slider1.png" alt="slider" class="main-slider-img">
-                        </a>
-                    </div>
-                    <div class="sub-slider">
-                        <a href="#" class="sub-slider-link">
-                            <img src="./assets/img/slider/subslider.jpg" alt="subslider" class="sub-slider-img">
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <?php
+                include_once("slider.php");
+            ?>
 
             <!-- Category -->
             <?php
