@@ -68,7 +68,7 @@
                         <i class="fa-regular fa-star"></i>
                     </div>
                     <div class="main-info-price">
-                        <span><?php echo $row['product_price'] ?> VND</span>
+                        <span><?php echo number_format($row['product_price'],0,',','.'); ?> VND</span>
                     </div>
                     <div class="main-info-desc">
                         <p><?php echo $row['product_desc'] ?></p>
