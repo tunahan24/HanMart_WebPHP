@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 29, 2023 lúc 10:00 AM
+-- Thời gian đã tạo: Th1 02, 2024 lúc 08:10 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -60,12 +60,14 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id_cart`, `user_id`, `code_cart`, `status_cart`) VALUES
-(2, 1, '7370', 0),
-(3, 2, '6691', 0),
-(4, 3, '5875', 0),
-(5, 1, '1895', 0),
-(6, 1, '3586', 1),
-(7, 3, '3625', 1);
+(1, 1, '5460', 0),
+(2, 1, '569', 0),
+(3, 2, '4702', 0),
+(4, 2, '3019', 0),
+(5, 3, '3502', 0),
+(6, 3, '475', 0),
+(7, 3, '6267', 1),
+(8, 1, '7825', 1);
 
 -- --------------------------------------------------------
 
@@ -85,23 +87,27 @@ CREATE TABLE `cart_detail` (
 --
 
 INSERT INTO `cart_detail` (`id_cart_detail`, `code_cart`, `product_id`, `soluong`) VALUES
-(2, '7370', 1, 1),
-(3, '7370', 3, 4),
-(4, '6691', 2, 1),
-(5, '6691', 7, 4),
-(6, '5875', 4, 1),
-(7, '5875', 9, 1),
-(8, '5875', 11, 3),
-(9, '1895', 1, 1),
-(10, '1895', 2, 1),
-(11, '1895', 3, 5),
-(12, '3586', 6, 1),
-(13, '3586', 5, 2),
-(14, '3586', 10, 2),
-(15, '3586', 8, 1),
-(16, '3625', 11, 3),
-(17, '3625', 7, 2),
-(18, '3625', 2, 2);
+(1, '5460', 1, 1),
+(2, '5460', 2, 3),
+(3, '569', 3, 5),
+(4, '569', 4, 3),
+(5, '569', 9, 1),
+(6, '4702', 7, 2),
+(7, '4702', 11, 1),
+(8, '4702', 2, 3),
+(9, '3019', 6, 6),
+(10, '3019', 10, 10),
+(11, '3019', 8, 2),
+(12, '3502', 18, 3),
+(13, '3502', 19, 6),
+(14, '475', 20, 4),
+(15, '475', 21, 8),
+(16, '6267', 20, 1),
+(17, '6267', 11, 1),
+(18, '7825', 19, 1),
+(19, '7825', 4, 1),
+(20, '7825', 18, 1),
+(21, '7825', 5, 1);
 
 -- --------------------------------------------------------
 
@@ -150,7 +156,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_cat`, `product_name`, `product_price`, `product_qty`, `product_desc`, `product_image`, `product_keyword`) VALUES
-(1, 1, 'Chanh', 18000, 1000, '                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    Chanh tươi nhập khẩu từ Mỹ                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ', 'lemon.jpg', 'chanh, rau củ quả'),
+(1, 1, 'Chanh', 18000, 1000, '                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                Chanh tươi nhập khẩu từ Mỹ                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ', 'lemon.jpg', 'chanh, rau củ quả'),
 (2, 8, 'Mì Ý Spaghetti', 125000, 1000, '                                                                                                                                            Mì Ý Spaghetti chuẩn công thức từ Ý                   ', 'miY.jpg', 'mì ý, spaghetti'),
 (3, 7, 'Sữa tươi', 99000, 1000, 'Sữa tươi nguyên chất 100% từ sữa bò', 'milk.jpg', 'sữa tươi, sữa'),
 (4, 4, 'Bánh mì', 64000, 1234, 'Bánh mì nhập khẩu từ Đức', 'banhmi.jpg', 'bánh mì'),
@@ -160,7 +166,11 @@ INSERT INTO `products` (`product_id`, `product_cat`, `product_name`, `product_pr
 (8, 8, 'Caramen', 139000, 1000, 'Caramen nguyên chất', 'caramen.jpg', 'caramen'),
 (9, 6, 'Nước hoa quả 100% nguyên chất', 35000, 1000, 'Nước hoa quả được làm 100% từ hoa quả tươi', 'nuocngot.jpg', 'nước hoa quả, nước ngọt, nước giải khát'),
 (10, 1, 'Tỏi', 42000, 1000, 'Tỏi tươi sạch 100% từ thiên nhiên', 'toi.jpg', 'tỏi, gia vị'),
-(11, 3, 'Thịt bò tươi sống', 540000, 1000, 'Thịt bò 100% tươi sống từ bò Tây Tạng', 'beef.jpg', 'thịt bò, thịt, thịt sống, thịt tươi');
+(11, 3, 'Thịt bò tươi sống', 540000, 1000, 'Thịt bò 100% tươi sống từ bò Tây Tạng', 'beef.jpg', 'thịt bò, thịt, thịt sống, thịt tươi'),
+(18, 8, 'Tương ớt siêu cay', 230000, 1999, '                            Tương ớt siêu cay 100% được làm từ loại ớt cay nhất thế giới                        ', 'tuongot.jpg', 'tương ớt, rau củ quả, ớt, tương ớt cay'),
+(19, 4, 'Bánh mì Sandwich', 68000, 2222, 'Bánh mì Sandwich được làm từ bánh mì, rau salad, cà chua, phô mai, thịt, ...', 'sandwich.jpg', 'bánh mì sandwich, sandwich, bánh mì'),
+(20, 6, 'Bia Hà Nội', 580000, 4545, '                            Bia Hà Nội chuẩn vị xưa                        ', 'bia.jpg', 'bia, bia hà nội, đồ uống, rượu'),
+(21, 1, 'Khoai lang', 320000, 9999, 'Khoai lang được trồng ở vùng đất Hà Giang', 'khoailag.jpg', 'khoai lang, rau củ quả, khoai');
 
 -- --------------------------------------------------------
 
@@ -241,13 +251,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT cho bảng `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `cart_detail`
 --
 ALTER TABLE `cart_detail`
-  MODIFY `id_cart_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_cart_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT cho bảng `category`
@@ -259,7 +269,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT cho bảng `user`
