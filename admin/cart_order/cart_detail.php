@@ -45,7 +45,7 @@
                 ?>
             </tbody>
             <tr>
-                <th colspan="7" style="font-size: 2rem; padding: 3rem" >Tổng doanh thu : <?php echo number_format($tongtien, 0,',','.').' VNĐ' ?></th>
+                <th colspan="7" style="font-size: 2rem; padding: 3rem" >Tổng tiền : <?php echo number_format($tongtien, 0,',','.').' VNĐ' ?></th>
             </tr>
         </table>
     </div>
