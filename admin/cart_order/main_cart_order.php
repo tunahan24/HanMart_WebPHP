@@ -21,6 +21,14 @@
             $listPage .= '<li><a href="index.php?page_layout=taikhoan&page=' . $i . '">' . $i . '</a></li>';
         }
     }
+
+    $sqlDetail="SELECT * FROM cart_detail ,products  WHERE cart_detail.product_id=products.product_id";
+    $queryDetail= mysqli_query($connect,$sqlDetail);
+    $tongdoanhthu=0;
+    while($rowDetail = mysqli_fetch_array($queryDetail)){
+        $doanhthu= $rowDetail['product_price'] * $rowDetail['soluong'];
+        $tongdoanhthu+=$doanhthu;
+    }
 ?>
 <div class="container-content-admin">
     <h1 class="content-admin-title">Thống kê đơn hàng</h1>
@@ -62,6 +70,9 @@
                 }
                 ?>
             </tbody>
+            <tr>
+                <th colspan="8" style="font-size: 2rem; padding: 3rem" >Tổng doanh thu : <?php echo number_format($tongdoanhthu, 0,',','.').' VNĐ' ?></th>
+            </tr>
         </table>
     </div>
     <ul class="cat-page">
