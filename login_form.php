@@ -1,6 +1,7 @@
 <?php
     session_start();
 	include('./config/connect.php');
+    include('./loginwithgg/google_source.php');
 	if(isset($_POST['dangnhap'])){
 		$email=$_POST['user_email'];
         $pass=$_POST['user_password'];
@@ -20,7 +21,7 @@
                 echo "<script type='text/javascript'>alert('$message');</script>";
             }
         }
-	} 
+	}
 ?>
 
 <!DOCTYPE html>
@@ -70,6 +71,12 @@
                     <div class="login-register">
                         <p>Bạn không có tài khoản?</p>
                         <a href="register_form.php" class="login-link-register">Đăng ký ngay</a>
+                    </div>
+                    <div style="text-align: center; font-size: 1.6rem"><Span>Hoặc</Span></div>
+                    <div class="login-gg">
+                        <?php if(isset($authUrl)) { ?>
+                        <a href="<?= $authUrl ?>" class="google-login"><img src="./assets/img/google_login.png" alt=""></a>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
