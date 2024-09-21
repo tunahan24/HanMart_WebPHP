@@ -87,7 +87,7 @@
         if (isset($_SESSION["user_name"])) {
             echo '<button class="pay-btn js-pay">Thanh toán</button>';
         } else {
-            echo '<button onclick="pay()" class="pay-btn">Thanh toán</button>';
+            echo '<button onclick="pay()" class="pay-btn">Đăng nhập để Thanh toán</button>';
         }
         ?>
 

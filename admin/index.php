@@ -1,6 +1,6 @@
 <?php
-    session_start();
-    include('../config/connect.php');
+session_start();
+include('../config/connect.php');
 
 ?>
 
@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="./css/main_admin.css">
     <link rel="stylesheet" href="../assets/icon/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../assets/icon/fontawesome-free-6.4.2-web/css/all.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
 </head>
 
 <body>
@@ -27,7 +28,7 @@
                 <div class="header-logo"><a href="../index.php"><img src="../assets/img/header/logo.png" alt="logo"
                             class="header-logo-img"></a></div>
                 <div class="header-admin-profile">
-                    <a href="#" class="admin-profile-link"><i class="fa-solid fa-user"></i>Hi, <?php if(isset($_SESSION['admin_name']))echo $_SESSION['admin_name'];?></a>
+                    <a href="#" class="admin-profile-link"><i class="fa-solid fa-user"></i>Hi, <?php if (isset($_SESSION['admin_name'])) echo $_SESSION['admin_name']; ?></a>
                     <div class="admin-profile-list">
                         <a href="#" class="admin-profile-link"><i class="fa-solid fa-user"></i>Thông tin</a>
                         <a href="logout.php" class="admin-profile-link"><i class="fa-solid fa-arrow-right-from-bracket"></i>Đăng xuất</a>
@@ -42,39 +43,108 @@
                     <li class="dashboard-item"><a href="index.php" class="dashboard-link">Quản lý Sản phẩm</a></li>
                     <li class="dashboard-item"><a href="index.php?page_layout=category" class="dashboard-link">Quản lý Danh mục</a></li>
                     <li class="dashboard-item"><a href="index.php?page_layout=taikhoan" class="dashboard-link">Quản lý Tài khoản</a></li>
-                    <li class="dashboard-item"><a href="index.php?page_layout=cart_order" class="dashboard-link">Thống kê đơn hàng</a></li>
+                    <li class="dashboard-item"><a href="index.php?page_layout=cart_order" class="dashboard-link">Quản lý đơn hàng</a></li>
+                    <li class="dashboard-item"><a href="index.php?page_layout=thongke" class="dashboard-link">Thống kê doanh thu</a></li>
                 </ul>
             </div>
 
             <?php
-            if(isset($_GET['page_layout'])){
-                switch($_GET['page_layout']){
-                    case 'products': include_once('./products/products.php');
+            if (isset($_GET['page_layout'])) {
+                switch ($_GET['page_layout']) {
+                    case 'products':
+                        include_once('./products/products.php');
                         break;
-                    case 'category': include_once('./category/category.php');
+                    case 'category':
+                        include_once('./category/category.php');
                         break;
-                    case 'taikhoan': include_once('./taikhoan/taikhoan.php');
+                    case 'taikhoan':
+                        include_once('./taikhoan/taikhoan.php');
                         break;
-                    case 'cart_order': include_once('./cart_order/main_cart_order.php');
+                    case 'cart_order':
+                        include_once('./cart_order/main_cart_order.php');
                         break;
-                    case 'cart_detail': include_once('./cart_order/cart_detail.php');
+                    case 'cart_detail':
+                        include_once('./cart_order/cart_detail.php');
                         break;
-                    case 'editProduct': include_once('./products/edit.php');
+                    case 'xac_nhan_order':
+                        include_once('./cart_order/xac_nhan_order.php');
                         break;
-                    case 'editTaikhoan': include_once('./taikhoan/edit.php');
+                    case 'editProduct':
+                        include_once('./products/edit.php');
+                        break;
+                    case 'editTaikhoan':
+                        include_once('./taikhoan/edit.php');
+                        break;
+                    case 'thongke':
+                        include_once('./thongke/main_thongke.php');
                         break;
                 }
-            }else{
+            } else {
                 include_once('./products/products.php');
             }
-                
+
             ?>
 
         </div>
-        
+
 
     </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     <script src="./js/main_admin.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            thongke();
+            var chart = new Morris.Area({
+                element: 'chart',
+                xkey: 'date',
+                ykeys: ['order', 'revenue', 'quality'],
+                labels: ['Đơn hàng', 'Doanh thu', 'Số lượng']
+            });
+        
+
+            $('.select-date').change(function() {
+                var thoigian = $(this).val();
+                if (thoigian == '7ngay') {
+                    var text = '7 ngày qua';
+                } else if (thoigian == '28ngay') {
+                    var text = '28 ngày qua';
+                } else if (thoigian == '90ngay') {
+                    var text = '90 ngày qua';
+                } else {
+                    var text = '365 ngày qua';
+                }
+                $.ajax({
+                    url: "thongke/thongke.php",
+                    method: "POST",
+                    dataType: "JSON",
+                    data: {
+                        thoigian: thoigian
+                    },
+                    success: function(data) {
+                        chart.setData(data);
+                        $('#text-date').text(text);
+                    }
+                });
+            })
+
+            function thongke() {
+                var text = '7 ngày qua';
+                $('#text-date').text(text);
+                $.ajax({
+                    url: "thongke/thongke.php",
+                    method: "POST",
+                    dataType: "JSON",
+                    success: function(data) {
+                        chart.setData(data);
+                        $('#text-date').text(text);
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
