@@ -1,10 +1,10 @@
 <?php
     $code=$_GET['code'];
-    $sql_update ="UPDATE cart SET status_cart=0 WHERE code_cart='$code'";
-	$query_update = mysqli_query($connect,$sql_update);
-
+    
     $sqlDh="SELECT * FROM cart_detail ,products  WHERE cart_detail.product_id=products.product_id AND cart_detail.code_cart=$code ORDER BY cart_detail.id_cart_detail ASC";
     $queryDh= mysqli_query($connect,$sqlDh);
+
+    
 ?>
 
 <div class="container-content-admin">
