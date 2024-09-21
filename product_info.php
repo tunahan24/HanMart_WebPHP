@@ -58,6 +58,9 @@
             <div class="main-info">
                 <form method="post" >
                     <div class="main-info-header">
+                        <?php if($row['product_qty'] == 0) { ?>
+                            <h1 style="color: red; font-style: italic">Hết hàng</h1>
+                        <?php } ?>
                         <h2><?php echo $row['product_name'] ?></h2>
                     </div>
                     <div class="main-info-star">
@@ -80,12 +83,17 @@
                         <span>Số lượng:</span>
                         <div class="product-button">
                             <button class="ti-minus pointer decrease"></button>
-                            <input class="quantity" name="sl" type="number" value="<?php if(isset($_POST['sl'])){echo $_POST['sl'];}else{echo 1;} ?>" title="Qty" step="1" min="1" max="100" required="">
+                            <input class="quantity" name="sl" type="number" value="<?php if(isset($_POST['sl'])){echo $_POST['sl'];}else{echo 1;} ?>" title="Qty" step="1" min="1" max="1000" required="">
                             <button class="ti-plus pointer increase"></button>
                         </div>
                     </div>
                     <div class="main-info-button">
+                        <?php if($row['product_qty'] > 0) { ?>
                         <a href=""><button type="submit" name="submit" >Thêm giỏ hàng<i class="ti-shopping-cart"></i></button></a>
+                        <?php } ?>
+                        <?php if($row['product_qty'] == 0) { ?>
+                        <button type="submit" style="background-color: #ccc; color: red;">Hết hàng<i class="ti-shopping-cart"></i></button>
+                        <?php } ?>
                     </div>
                 </form>
             </div>
