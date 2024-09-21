@@ -1,8 +1,12 @@
 <?php
+use Carbon\Carbon;
+use Carbon\CarbonInterval;
+
 $user_id=$_SESSION["user_id"];
 $code_order=rand(0,9999);
+$now = Carbon::now('Asia/Ho_Chi_Minh');
 
-$insert_cart = "INSERT INTO cart(user_id, code_cart, status_cart) VALUES('$user_id','$code_order',1)";
+$insert_cart = "INSERT INTO cart(user_id, code_cart, cart_date, status_cart) VALUES('$user_id','$code_order', '$now',1)";
 $cart_query = mysqli_query($connect,$insert_cart);
 if($cart_query){
     foreach($_SESSION['cart'] as $product_id => $product_qty){
