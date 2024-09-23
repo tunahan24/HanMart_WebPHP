@@ -21,8 +21,6 @@
             $listPage .= '<li><a href="index.php?page=' . $i . '">' . $i . '</a></li>';
         }
     }
-
-    
 ?>
 
 <div class="content-product">
