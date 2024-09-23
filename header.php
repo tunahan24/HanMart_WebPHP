@@ -28,7 +28,6 @@
             </ul>
         </div>
     </div>
-
     <div class="header-mid">
         <div class="container-header-mid">
             <div class="header-logo"><a href="index.php"><img src="./assets/img/header/logo.png" alt="logo" class="header-logo-img"></a></div>

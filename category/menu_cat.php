@@ -2,7 +2,6 @@
     $sql_cat = "SELECT * FROM category ";
     $query_cat = mysqli_query($connect, $sql_cat);
 ?>
-
 <div class="menu-category">
     <i class="fa-solid fa-bars menu-category-icon"></i>
     <h2 class="menu-category-header">SHOP BY CATEGORY</h2>

@@ -56,7 +56,6 @@
             <?php
                 include_once("brand.php");
             ?>
-
         </div>
         <!-- Footer -->
         <?php
