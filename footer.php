@@ -101,7 +101,6 @@
                         <button class="send-email-btn">Đăng ký</button>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
