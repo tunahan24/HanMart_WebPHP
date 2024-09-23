@@ -34,7 +34,6 @@ if (isset($_SESSION["cart"])) {
         die("Query failed: " . mysqli_error($connect));
     }
 }
-
 ?>
 <?php
 $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
